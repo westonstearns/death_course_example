@@ -86,7 +86,7 @@ ggplot(deathdata_long, aes(Causes,deaths)) + geom_bar(aes(fill = ages),stat = "i
 test_error()
 success_msg("Good work!")
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:e7bdffa0e9
+--- type:NormalExercise lang:r xp:100 skills:1 key:bcf576415a
 ## Death data Freestyle
 
 For this exercise the `deathdata` data set has een loaded in the environemnet along with the `ggplot2`, `dplyr` and `tidyr` libraries. 
