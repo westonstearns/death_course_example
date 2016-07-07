@@ -60,10 +60,10 @@ deathdata$Causes
 # Creating a list to sample the dataset
 cause_list <- as.data.frame(c("Breast cancer","Hypertensive heart disease", "Stroke", "Diabetes mellitus"))
 # Rename the column name
-names(Cause_list) <- "Causes"
+names(cause_list) <- "Causes"
 
 # Sample the deathdata 
-deathdata_sample <- right_join(deathdata,Cause_list)
+deathdata_sample <- right_join(deathdata,cause_list)
 
 # Making the data into long format
 deathdata_long <- gather(deathdata_sample, "ages","deaths", 2:16)
