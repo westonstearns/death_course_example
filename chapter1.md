@@ -2,115 +2,80 @@
 title       : Insert the chapter title here
 description : Insert the chapter description here
 attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:5096054d46
-## A really bad movie
-
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
-
-*** =instructions
-- Adventure
-- Action
-- Animation
-- Comedy
-
-*** =hint
-Have a look at the plot. Which color does the point with the lowest rating have?
-
-*** =pre_exercise_code
-```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
-
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
-
-library(ggplot2)
-
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
-```
-
-*** =sct
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
-```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:e7bdffa0e9
-## More movies
+## Death data
 
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
+The data set is loaded and available so are the libraries...
 
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
+Sample the data and creat a plot
 
 *** =instructions
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
+- Print a list of the diseases using the code `deathdata$Casues`
+- Create a list of the diseases of interest
+- sample the data based on those diseases
+- reshape the data
+- make plot
 
 *** =hint
-- Use `str()` for the first instruction.
-- For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
-- For the plot, use `plot(x = ..., y = ..., col = ...)`.
+- hinty hint hint
 
 *** =pre_exercise_code
 ```{r}
-# You can also prepare your dataset in a specific way in the pre exercise code
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 
-library(MindOnStats)
-data(Movies)
-movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"),c("Genre", "Rating", "Run")]
+load(url(""http://s3.amazonaws.com/assets.datacamp.com/production/course_1300/datasets/deathdata.Rdata"))
 
-# Clean up the environment
-rm(Movies)
 ```
 
 *** =sample_code
 ```{r}
-# movie_selection is available in your workspace
+# Print list of diseases
+deathdata$___
 
-# Check out the structure of movie_selection
+# Creating a list to sample the dataset
+cause_list <- as.data.frame(c("___","___", "___", "___"))
+# Rename the column name
+names(___) <- "Causes"
 
+# Sample the deathdata 
+deathdata_sample <- right_join(___,___)
 
-# Select movies that have a rating of 5 or higher: good_movies
+# Making the data into long format
+deathdata_long <- gather(deathdata_sample, "ages","deaths", 2:16)
 
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
+# Plotting the data
+ggplot(deathdata_long, aes(Causes,deaths)) + geom_bar(aes(fill = ages),stat = "identity") + theme(axis.text.x = element_text(angle = 60, hjust = 1))
 
 ```
 
 *** =solution
 ```{r}
-# movie_selection is available in your workspace
+# Print list of diseases
+deathdata$Causes
 
-# Check out the structure of movie_selection
-str(movie_selection)
+# Creating a list to sample the dataset
+cause_list <- as.data.frame(c("Breast cancer","Hypertensive heart disease", "Stroke", "Diabetes mellitus"))
+# Rename the column name
+names(Cause_list) <- "Causes"
 
-# Select movies that have a rating of 5 or higher: good_movies
-good_movies <- movie_selection[movie_selection$Rating >= 5, ]
+# Sample the deathdata 
+deathdata_sample <- right_join(deathdata,Cause_list)
 
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-plot(good_movies$Run, good_movies$Rating, col = good_movies$Genre)
+# Making the data into long format
+deathdata_long <- gather(deathdata_sample, "ages","deaths", 2:16)
+
+# Plotting the data
+ggplot(deathdata_long, aes(Causes,deaths)) + geom_bar(aes(fill = ages),stat = "identity") + theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
 ```
 
 *** =sct
 ```{r}
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
 
-test_function("str", args = "object",
-              not_called_msg = "You didn't call `str()`!",
-              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
-
-test_object("good_movies")
-
-test_function("plot", args = "x")
-test_function("plot", args = "y")
-test_function("plot", args = "col")
-
 test_error()
-
 success_msg("Good work!")
 ```
