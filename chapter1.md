@@ -86,3 +86,50 @@ ggplot(deathdata_long, aes(Causes,deaths)) + geom_bar(aes(fill = ages),stat = "i
 test_error()
 success_msg("Good work!")
 ```
+--- type:NormalExercise lang:r xp:100 skills:1 key:e7bdffa0e9
+## Death data Freestyle
+
+For this exercise the `deathdata` data set has een loaded in the environemnet along with the `ggplot2`, `dplyr` and `tidyr` libraries. 
+
+There is no `sample code` or `solution code`, so you can execute any function or create plots in the `script.R window` and run the code by highlighting the code and pressing `command + enter`. 
+
+The output will show in the `R Console` window. 
+
+When you are finished pressing `submit` will run the exercise and give you a success message.
+
+*** =instructions
+- Explore the source window!
+
+
+*** =hint
+- No hint
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1300/datasets/deathdata.RData"))
+deathdata <- data
+
+```
+
+*** =sample_code
+```{r}
+# Explore the DataCamp platfom here!
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+
+test_error()
+success_msg("Good work!")
+```
