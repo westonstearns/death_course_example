@@ -26,7 +26,7 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 
-load(url(""http://s3.amazonaws.com/assets.datacamp.com/production/course_1300/datasets/deathdata.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1300/datasets/deathdata.Rdata"))
 
 ```
 
