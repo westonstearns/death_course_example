@@ -40,18 +40,18 @@ deathdata <- data
 *** =sample_code
 ```{r}
 # Print list of diseases
-deathdata$___
+deathdata$Causes
 
 # Creating a list to sample the dataset
-cause_list <- as.data.frame(c("___","___", "___", "___"))
+cause_list <- as.data.frame(c("Breast cancer","Drowning", "Stroke", "Diabetes mellitus"))
 # Rename the column name
-names(___) <- "Causes"
+names(cause_list) <- "Causes"
 
 # Sample the deathdata 
-deathdata_sample <- right_join(___,___)
+deathdata_sample <- right_join(deathdata,cause_list)
 
 # Making the data into long format
-deathdata_long <- gather(___, "ages","deaths", 2:16)
+deathdata_long <- gather(deathdata_sample, "ages","deaths", 2:16)
 
 # Plotting the data
 ggplot(deathdata_long, aes(Causes,deaths)) + geom_bar(aes(fill = ages),stat = "identity") + theme(axis.text.x = element_text(angle = 60, hjust = 1))
@@ -95,7 +95,7 @@ There is no `sample code` or `solution code`, so you can execute any function or
 
 The output will show in the `R Console` window. 
 
-When you are finished pressing `submit` will run the exercise and give you a success message.
+When you are finished pressing `submit` will run the exercise and give you a success message. You can then exit out of the success message and continue coding on the same exercise.
 
 *** =instructions
 - Explore the source window!
@@ -131,5 +131,5 @@ deathdata <- data
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
 
 test_error()
-success_msg("Good work!")
+success_msg("Good work freestyling! You can exit out of this message and continue coding, or finish up the exercise by clicking `Course Finished`")
 ```
