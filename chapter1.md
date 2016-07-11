@@ -1,10 +1,10 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
+title       : Freestyle Chapter Example
+description : Freestyle Chapter Example
 attachments :
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:e7bdffa0e9
-## Death data
+## Death data set
 
 This is an example of how our platform works. 
 
